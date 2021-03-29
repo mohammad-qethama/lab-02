@@ -1,0 +1,32 @@
+
+div {
+    width:calc(100%/3);
+    height: 400px;
+    float: left;
+    padding: 30px;
+    text-align: center;
+    border: 1px black;
+    box-shadow:5px rgb(95, 94, 94) ; 
+    /* margin: 20px; */
+    
+
+}
+
+header{
+    text-align: center;
+    background: #a9a9a9;
+    line-height:50 px;
+
+}
+
+footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    height: 200px;
+    width: 100%;
+    line-height: 200px;
+    float: left;
+    clear: both;
+    font-family: 'Rajdhani', sans-serif;
+}
