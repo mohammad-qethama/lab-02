@@ -41,3 +41,20 @@ Finish time: 7:00 PM
 Actual time needed to complete: 45 mins
 
 ***
+
+
+## lab-03 Solution
+
+Mustache.js and Flexbox implementing 
+
+Number and name of feature:  **Feature #1: Display images**
+
+Estimate of time needed to complete: 30 min
+
+Start time: 2:50 PM
+
+Finish time: 4:00PM
+
+Actual time needed to complete: 1 hour : 10 mins
+
+***
