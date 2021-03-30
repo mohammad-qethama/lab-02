@@ -19,23 +19,40 @@ $( document ).ready( function(){
 //         $('div').css({'background-color':'#fff'});
 //     }
 //      });
-  let hornsData = [];
+  const pageOneJson = './data/page-1.json' ;
+  const pageTwoJson = './data/page-2.json';
+  let hornsObjArray = [];
   let keywords = [];
-  $.ajax( './data/page-1.json' )
-    .then( hornsData => {
+  function renderPagesOptions( hornsData ){
+    $( 'main' ).empty();
+    $( '#filter > option ' ).not( ':first' ).remove();
+    keywords = [];
+    hornsData.forEach( dataVal => {
+      let newHorn = new hornObject( dataVal );
 
-      hornsData.forEach( dataVal => {
-        let newHorn = new hornObject( dataVal );
-
-        newHorn.renderTemplate();
+      newHorn.renderTemplate();
+      console.log( {keywords} );
 
 
 
 
 
-      } );
-      $( '#photo-template' ).first().remove();
     } );
+
+
+  }
+  function getData( JsonPath ){
+
+    $.ajax( JsonPath )
+      .then( hornsData => {
+        hornsObjArray = hornsData;
+        console.log( {hornsObjArray} );
+        console.log( hornsObjArray );
+        hornsData.sort( ( a, b ) => ( a.title > b.title ) ? 1 : -1 );
+
+        renderPagesOptions( hornsData );
+
+      } );}
 
 
   function hornObject ( hornsObj ){
@@ -49,23 +66,28 @@ $( document ).ready( function(){
   }
 
   hornObject.prototype.renderTemplate = function(){
-    console.log( 'rendering' );
-    let tempClone = $( '#photo-template' ).first().clone();
-    tempClone.addClass( this.keyword );
-    tempClone.find( 'img' ).attr( 'src',this.img );
-    tempClone.find( 'h2' ).text( this.title );
-    tempClone.find( 'p' ).text( this.description );
-    $( 'main' ).append( tempClone );
+    // console.log( 'rendering' );
+    // let tempClone = $( '#photo-template' ).first().clone();
+    // tempClone.addClass( this.keyword );
+    // tempClone.find( 'img' ).attr( 'src',this.img );
+    // tempClone.find( 'h2' ).text( this.title );
+    // tempClone.find( 'p' ).text( this.description );
+    // $( 'main' ).append( tempClone );
+
+    let tempTemplate = $( '#Photo-Mustache' ).html();
+    let renderTemplate = Mustache.render( tempTemplate,this );
+    $( 'main' ).append( renderTemplate );
 
     if ( !( keywords.includes( this.keyword ) ) ){
       keywords.push( this.keyword );
       let optionElement = $( '<option> </option>' ).attr( 'value',this.keyword ).text( this.keyword );
-      $( 'select' ).append( optionElement );
+      $( '#filter' ).append( optionElement );
     }
 
   };
+  getData( pageOneJson );
 
-  $( 'select' ).change( ( e ) => {
+  $( '#filter' ).change( ( e ) => {
     $( 'div' ).hide();
     let targetValue = e.target.value;
     $( `.${targetValue}` ).show();
@@ -73,8 +95,35 @@ $( document ).ready( function(){
       $( 'div' ).show();
     }
 
+  } );
+  $( '#sorter' ).change( ( es ) => {
+    if ( es.target.value === 'horns' ){
+      console.log( 'hai' );
+      hornsObjArray.sort( ( a, b ) => ( a.horns > b.horns ) ? 1 : -1 );
+      renderPagesOptions( hornsObjArray );
+
+
+
+    }
+    if( es.target.value === 'name' ){
+      console.log( 'hai2' );
+      hornsObjArray.sort( ( a, b ) => ( a.title > b.title ) ? 1 : -1 );
+      renderPagesOptions( hornsObjArray );
+    }
 
   } );
+
+  $( '.page' ).click( ( e1 ) =>{
+    let pageNumber = e1.target.value;
+    if ( pageNumber === 'page1' ){
+      getData( pageOneJson );
+    }
+    if( pageNumber === 'page2' ){
+      getData( pageTwoJson );
+    }
+    $( 'select' ).prop( 'selectedIndex',0 );
+  }
+  );
 
 
 
