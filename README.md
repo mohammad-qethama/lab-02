@@ -47,14 +47,60 @@ Actual time needed to complete: 45 mins
 
 Mustache.js and Flexbox implementing 
 
-Number and name of feature:  **Feature #1: Display images**
+Number and name of feature:  **Feature 2: Templating**
 
 Estimate of time needed to complete: 30 min
 
-Start time: 2:50 PM
+Start time: 2:10 PM
 
-Finish time: 4:00PM
+Finish time: 2:35 PM
 
-Actual time needed to complete: 1 hour : 10 mins
+Actual time needed to complete: 25 mins
 
 ***
+
+
+Number and name of feature:  **Feature 1: Pagination**
+
+Estimate of time needed to complete: 60 min
+
+Start time: 2:40 PM
+
+Finish time: 3:30 PM
+
+Actual time needed to complete: 50 mins
+
+***
+
+
+
+Number and name of feature:  **Feature 1: Pagination**
+
+Estimate of time needed to complete: 60 min
+
+Start time: 2:40 PM
+
+Finish time: 3:30 PM
+
+Actual time needed to complete: 50 mins
+***
+Number and name of feature:  **Feature 4: Sort the images**
+
+Estimate of time needed to complete: 60 min
+
+Start time: 3:50 PM
+
+Finish time: 5:50 PM
+
+Actual time needed to complete: 120 mins
+***
+
+Number and name of feature:  **Feature 3: Styling with Flexbox**
+
+Estimate of time needed to complete: 30 min
+
+Start time 6:00 PM
+
+Finish time: 6:40 PM
+
+Actual time needed to complete: 40 mins
